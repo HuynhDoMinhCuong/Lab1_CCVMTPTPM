@@ -1,0 +1,268 @@
+Lab1_Nhóm SCHCNTT: Câu 1,2,3,4,5,6,7,8,9,10,11 (Làm hết)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+        body {
+            margin: 30px;
+        }
+    </style>
+
+    <title>Nhóm SCHCNTT</title>
+    
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" 
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer">  
+
+    </script>
+
+</head>
+<body onload="displayWindowSize()">
+    <p> Câu 1 </p>
+    <p id="text"> Javascript </p>
+    <div>
+        <button id="jsstyle" onclick="js_style()">Style</button>
+        <script>
+            document.getElementById("jsstyle").addEventListener("click", function() {
+              document.getElementById("text").style.color = "red";
+              document.getElementById("text").style.fontSize = "30px";
+            });
+          </script>
+    </div>
+
+    <p> Câu 2 </p>
+    <div>
+<form id="form1" onSubmit="getFormvalue();">
+        First name: <input type="text" name="fname" id="fname" value="Cường"><br>
+        Last name: <input type="text" name ="lname" id="lname" value="Huỳnh Đỗ Minh"><br>
+        <input type="submit"  value="Submit" onclick="displayName()">
+    </form>
+    
+  <script>
+  function displayName() {
+    var firstName = document.getElementById("fname").value;
+    var lastName = document.getElementById("lname").value;
+        alert("First Name: " + firstName + "\nLast Name: " + lastName); 
+  }
+  </script>
+    </div>
+
+    <p> Câu 3 </p>
+    <div>
+        <button id="myButton">Thay đổi màu nền</button>
+        <button id="myButton02">Trở lại màu nền mặc định</button>
+        <script>
+            const button = document.querySelector("#myButton");
+            button.addEventListener("click", function () {
+                document.body.style.backgroundColor = "purple";
+            });
+            const button02 = document.querySelector("#myButton02");
+            button02.addEventListener("click", function () {
+                document.body.style.backgroundColor = "white";
+            });
+        </script>
+    </div>
+
+    <p> Câu 4 </p>
+    <p> 
+        <a id ="somelink" type="text/html" hreflang="en-us" rel="no-referrer" target="_self" href="http://www.google.com/">
+            Google Website
+        </a>
+    </p>
+    <div>
+    <button onclick="getAttributes()"> Click here tp get attributes value </button>
+        <script>
+            function getAttributes(){
+                let link = document.querySelector("#somelink");
+                let href = link.getAttribute("hrep");
+                let hreflang = link.getAttribute("hreplang");
+                let rel = link.getAttribute("rel");
+                let target = link.getAttribute("target");
+                console.log("href:", href);
+                console.log("hreflang:", hreflang);
+                console.log("rel:", rel);
+                console.log("target:", target);
+
+            }
+        </script>
+    </div>
+
+    <p> Câu 5 </p>
+    <div>
+        <table>
+            <tbody id="table-content">
+                <tr>
+                    <td>Row 1 Cell 1</td>
+                    <td>Row 1 Cell 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Cell 1</td>
+                    <td>Row 2 Cell 2</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" id="btnInsert_Row" value="Insert row">
+        <script>
+            $('#btnInsert_Row').on('click',function(e){
+                let a = `<tr>
+                    <td>Row 1 Cell 1</td>
+                    <td>Row 1 Cell 2</td>
+                </tr>`;
+
+                $('#table-content').append(a);
+            })
+        </script>
+    </div>
+
+    <p> Câu 6 </p>
+    <div>
+        <table id="table" border="1">
+            <tr>
+                <td> Row 1 cell 1</td>
+                <td> Row 1 cell 2</td>
+                
+            </tr> 
+            <tr>
+                <td> Row 2 cell 1</td>
+                <td> Row 2 cell 2</td>
+
+            </tr> 
+        </table>
+        <button onclick = "ChangeContent()"> Change content</button>
+        <script>
+            function ChangeContent(){
+                var table = document.getElementById("table");
+                var rows = table.getElementsByTagName("tr");
+                for (var i = 0; i < rows.length; i++) {
+                    var cells = rows[i].getElementsByTagName("td");
+                    for (var j = 0; j < cells.length; j++) {
+                        cells[j].innerHTML = "Row in table";
+                    }
+                }
+            }
+        </script>
+    </div>
+
+    <p> Câu 7 </p>
+    <div>
+        <table id="myTable" border="1">
+        </table>
+        <button onclick = "createTable(3, 5)"> Create the table </button>
+        <script>
+            function createTable(rows, columns){
+                var table = document.getElementById("myTable");
+                
+                for (var i = 0; i < rows; i++) {
+                    var row = table.insertRow(i);
+
+                    for (var j = 0; j < columns; j++) {
+                        var cell = row.insertCell(j);
+                        cell.innerHTML = "Row in table";
+                    }
+                }
+            }
+        </script>
+
+    </div>
+
+    <p> Câu 8 </p>
+    <div>
+        <form> 
+          <select id="colorSelect">
+            <option>Red</option>
+            <option>Green</option>
+            <option>White</option>
+            <option>Black</option>
+          </select>
+          <input type="button" onclick="removecolor()" value="Select and Remove"><br>
+        </form>
+          <script>
+          function removecolor() {
+            var select = document.getElementById("colorSelect");
+            var selectedOption = select.options[select.selectedIndex];
+            select.remove(select.selectedIndex);
+          }
+        </script>
+      </div>
+
+    <p> Câu 9 </p>
+    <div>
+        <button id="showImage">Show Image</button>
+    <div id="imageContainer"></div>
+    <script>
+        const images = [
+            {
+                src: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+                width: "240",
+                height: "160"
+            },
+            {
+                src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+                width: "320",
+                height: "195"
+            },
+            {
+                src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+                width: "500",
+                height: "343"
+            }
+        ];
+        $("#showImage").click(function() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const image = images[randomIndex];
+            const imgTag = `<img src="${image.src}" width="${image.width}" height="${image.height}" />`;
+            $("#imageContainer").html(imgTag);
+        });
+    </script>
+    </div>
+
+    <p> Câu 10 </p>
+    <div>
+        <p id="displaySize">The window size will be displayed here</p>
+
+	<script>
+		function displayWindowSize() {
+			var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+			var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+			document.getElementById("displaySize").innerHTML = "Window Width: " + width + "px, Window Height: " + height + "px";
+		}
+
+		window.onresize = function() {
+			displayWindowSize();
+		};
+	</script>
+    </div>
+
+      <p> Câu 11 </p>
+      <div>
+        <div id="ajax">
+        </div>
+        <input type="button" onclick="fetch_api()" value="fetch API">
+    
+        <script>
+       		function fetch_api() {
+			const xhr = new XMLHttpRequest();
+			xhr.open("GET", "http://hipsterjesus.com/api/?type=hipster-centric&paras=4", true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+					const response = JSON.parse(xhr.responseText);
+					let text = "";
+					for (let i = 0; i < 3; i++) {
+						text += response.text + "<br>";
+					}
+					document.getElementById("ajax").innerHTML = text;
+				}
+			};
+			xhr.send();
+		}
+        </script>
+      </div>
+      
+</body>
+</html>
